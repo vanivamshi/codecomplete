@@ -1,0 +1,14 @@
+torch>=2.2
+transformers>=4.44
+tokenizers>=0.19
+sentencepiece
+protobuf
+accelerate>=0.30
+peft>=0.11
+bitsandbytes>=0.43
+datasets>=2.19
+requests
+tqdm
+fastapi
+uvicorn
+pydantic>=2

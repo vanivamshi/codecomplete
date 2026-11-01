@@ -1,0 +1,61 @@
+{
+  "name": "codecomplete",
+  "displayName": "CodeComplete",
+  "description": "Inline Python completions from a fine-tuned CodeLlama-7B",
+  "version": "0.1.0",
+  "publisher": "codecomplete",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Programming Languages", "Machine Learning"],
+  "activationEvents": ["onLanguage:python"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "codecomplete.toggle", "title": "CodeComplete: Toggle Suggestions" },
+      { "command": "codecomplete.showStats", "title": "CodeComplete: Show Acceptance Stats" }
+    ],
+    "configuration": {
+      "title": "CodeComplete",
+      "properties": {
+        "codecomplete.serverUrl": {
+          "type": "string",
+          "default": "http://127.0.0.1:8000",
+          "description": "URL of the completion server."
+        },
+        "codecomplete.debounceMs": {
+          "type": "number",
+          "default": 150,
+          "description": "Wait this long after the last keystroke before requesting a completion."
+        },
+        "codecomplete.maxPrefixChars": {
+          "type": "number",
+          "default": 4000,
+          "description": "Characters of code above the cursor sent to the server."
+        },
+        "codecomplete.maxSuffixChars": {
+          "type": "number",
+          "default": 1000,
+          "description": "Characters of code below the cursor sent to the server."
+        },
+        "codecomplete.shareUsageStats": {
+          "type": "boolean",
+          "default": false,
+          "description": "Send anonymous shown/accepted events (no code) to the server for the acceptance-rate study."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^2.24.0",
+    "typescript": "^5.4.0"
+  }
+}
